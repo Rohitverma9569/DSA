@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findFinalValue(vector<int>& nums, int original) {
-        /*
+        
     int n=nums.size();
     int ans=original;
     bool isFound=false;
@@ -29,11 +29,14 @@ public:
         }
     }
     return ans;
-    */
+    
+    /*
     unordered_set<int> s(nums.begin(),nums.end());
     while(s.count(original)){
         original*=2;
     }
     return original;
+    */
     }
+    
 };

@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        
         int n=numCourses;
         int k=prerequisites.size();
         vector<vector<int>> adj(n);

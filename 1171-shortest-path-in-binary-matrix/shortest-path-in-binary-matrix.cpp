@@ -30,13 +30,7 @@ public:
                     pq.push({dist+1,xcor,ycor});
                 }
             }
-
-
         }
-        return -1;
-
-
-          
-        
+        return -1;   
     }
 };

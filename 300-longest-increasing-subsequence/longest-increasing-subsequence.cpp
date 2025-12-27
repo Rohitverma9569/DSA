@@ -1,6 +1,6 @@
 class Solution {
 public:
-
+/*
 int solve(int ind,int prev,int n,vector<int>& nums,vector<vector<int>>& dp){
     if(ind==n) return 0; 
     if(dp[ind][prev+1]!=-1){
@@ -13,11 +13,14 @@ int solve(int ind,int prev,int n,vector<int>& nums,vector<vector<int>>& dp){
     }
     return dp[ind][prev+1]=len;
 }
+*/
 
     int lengthOfLIS(vector<int>& nums) {
+        /*
         int n=nums.size();
         vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
         return solve(0,-1,n,nums,dp);
+        */
         /*
         int n=nums.size();
         vector<vector<int>> dp(n+1,vector<int>(n+1,0));
@@ -31,12 +34,11 @@ int solve(int ind,int prev,int n,vector<int>& nums,vector<vector<int>>& dp){
             }
         }
         return dp[0][0];
-        */
-        /*
+        */        
         int n=nums.size();
         vector<int> temp;
         temp.push_back(nums[0]);
-        int len=1;
+        int len=1;         
         for(int i=1;i<n;i++){
             if(nums[i]>temp.back()){
                 temp.push_back(nums[i]);
@@ -48,7 +50,5 @@ int solve(int ind,int prev,int n,vector<int>& nums,vector<vector<int>>& dp){
             }
         }
         return len;
-        */
-
     }
 };

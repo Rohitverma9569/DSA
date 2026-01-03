@@ -1,5 +1,7 @@
 class Solution {
 public:
+int M=1e9+7;
+/*
 string states[12]={"RYG","RGY","RYR","RGR","YRG","YGR","YGY","YRY","GRY","GYR","GRG","GYG"};
 int M=1e9+7;
 vector<vector<int>> t;
@@ -31,12 +33,26 @@ int solve(int n,int prev){
     }
     return t[n][prev]=result;   
 }
+*/
     int numOfWays(int n){
+        /*
         t.resize(n+1,vector<int>(12,-1));
         int result=0;
         for(int i=0;i<12;i++){
             result=(result+solve(n-1,i))%M;
         }
-        return result;       
+        return result; 
+        */
+        long long diff = 6, same = 6;
+
+        for(int i = 1; i < n; i++) {
+            long long s = (3*same + 2*diff)%M;
+            long long d = (2*same + 2*diff)%M;
+
+            same = s;
+            diff = d; 
+        }
+
+        return (same + diff)%M;      
     }
 };

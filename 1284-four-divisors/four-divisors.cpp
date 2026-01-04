@@ -1,13 +1,19 @@
 class Solution {
 public:
 pair<int,int> divisor(int num) {
-    int sum = 0;
     int div = 0;
+    int sum = 0;
 
-    for(int i = 1; i <= num; i++) {
+    for(int i = 1; i * i <= num; i++) {
         if(num % i == 0) {
             div++;
             sum += i;
+
+            if(i != num / i) {
+                div++;
+                sum += num / i;
+            }
+
             if(div > 4) {
                 return {-1, -1};
             }
@@ -15,6 +21,7 @@ pair<int,int> divisor(int num) {
     }
     return {div, sum};
 }
+
 
     int sumFourDivisors(vector<int>& nums) {
         int n=nums.size();

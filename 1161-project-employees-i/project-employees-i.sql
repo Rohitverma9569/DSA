@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+select p.project_id, Round(AVG(e.experience_years),2) as average_years
+from Project p left join
+Employee e
+on p.Employee_id=e.Employee_id
+group by p.project_id
+
+
+
+
+

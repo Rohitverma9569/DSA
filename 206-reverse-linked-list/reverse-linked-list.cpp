@@ -19,10 +19,21 @@ void solve(ListNode* &head,ListNode* curr,ListNode*prev){
     curr->next=prev;
     solve(head,forward,curr);   
 }
+ListNode* solve2(ListNode* &head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    ListNode* chotaNode=solve2(head->next);
+    head->next->next=head;
+    head->next=NULL;
+    return chotaNode;
+}
     ListNode* reverseList(ListNode* head) {
         ListNode* curr=head;
         ListNode* prev=NULL;
-        solve(head,curr,prev);
-        return head;       
+        //solve(head,curr,prev);
+        //return head;
+        return solve2(head);
+               
     }
 };

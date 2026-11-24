@@ -4,28 +4,43 @@ public:
         int n=nums.size();
         sort(nums.begin(),nums.end());
         vector<vector<int>>ans;
-        for(int i=0;i<n;i++){
-            if(i>0 && nums[i]==nums[i-1]) continue;
-            for(int j=i+1;j<n;j++){
-                if(j > i + 1 && nums[j]==nums[j-1]) continue;
-                int p=j+1;
-                int q=n-1;
-                while(p<q){
-                    long long sum=(long long)nums[i]+(long long)nums[j]+(long long)nums[p]+(long long)nums[q];
-                   if(sum<target){
-                    p++;
-                   }else if(sum>target){
-                    q--;
-                   }else{
-                    vector<int>temp={nums[i],nums[j],nums[p],nums[q]};
-                    ans.push_back(temp);
-                    p++;
-                    q--;
-                    while(p<q && nums[p]==nums[p-1]) p++;
-                    while(p<q && nums[q]==nums[q+1]) q--;
-                    
-                   }
+        for(int i=0;i<n-3;i++){
+            if(i>0){
+                if(nums[i]==nums[i-1]){
+                    continue;
                 }
+            }
+            int m=nums[i];
+            for(int j=i+1;j<n-2;j++){
+            if(j>i+1){
+                if(nums[j]==nums[j-1]){
+                    continue;
+                }
+            }
+            int k=nums[j];
+            int l=j+1;
+            int r=n-1;
+            while(l<r){
+                long long sum=(long long)m+k+nums[l]+nums[r];
+                if(sum==target){
+                   ans.push_back({m,k,nums[l],nums[r]});
+                   l++;
+                   r--;
+                   while(l<r && nums[l]==nums[l-1]){
+                    l++;
+                   }
+                   while(l<r && nums[r]==nums[r+1]){
+                    r--;
+                   }
+                   
+                }else if(sum<target){
+                  l++;
+                }
+                else{
+                    r--;
+                }
+            }
+        
             }
         }
         return ans;
